@@ -2,6 +2,7 @@ package src;
 
 import src.model.ContaCorrente;
 import src.model.ContaPoupanca;
+import src.model.Movimentacao;
 import src.utils.DataUtil;
 
 public class App {
@@ -21,15 +22,16 @@ public class App {
         // ContaBancaria conta = new ContaBancaria("0001", "7543", 6, 200.0);
         ContaPoupanca conta2 = new ContaPoupanca("0001", "7543", 6, 200.0);
         conta2.transferir(100.0, conta);
-        System.out.println("Saldo conta destino de R$" + conta2.getSaldo()+ "\n");
-        System.out.println("Saldo conta atual de R$" + conta2.getSaldo()+ "\n");
+        System.out.println("Saldo conta destino de R$" + conta2.getSaldo() + "\n");
+        System.out.println("Saldo conta atual de R$" + conta2.getSaldo() + "\n");
 
         System.out.println(conta2.getDataAbertura());
 
-        //não precisa mais pq o método é estático
+        // não precisa mais pq o método é estático
         // DataUtil util = new DataUtil();
 
-        // String formatado1 = util.converterDateParaDataEHora(conta2.getDataAbertura());
+        // String formatado1 =
+        // util.converterDateParaDataEHora(conta2.getDataAbertura());
         String formatado1 = DataUtil.converterDateParaDataEHora(conta2.getDataAbertura());
 
         // String formatado2 = util.converterDateParaHora(conta2.getDataAbertura());
@@ -42,7 +44,16 @@ public class App {
         System.out.println(formatado2);
         System.out.println(formatado3);
 
+        /*
+         * um extrato bancário é composto por movimentações bancárias
+         * ter algo que possa ser a movimentação
+         * ter uma lista de movimentações
+         */
 
+         Movimentacao movimentacao = new Movimentacao("Saque", 10.0);
+         System.out.println(movimentacao);
 
+         conta.imprimirExtrato();
+         conta2.imprimirExtrato();
     }
 }
