@@ -1,13 +1,18 @@
 package src.model;
 
+import java.util.Date;
 import java.util.InputMismatchException;
 
-public class ContaBancaria {
+/*A classe conta bancária tem que ser abstrata pq ela só serve de modelo para as demais
+ * ela não pode ser referenciada/instanciada, apenas modelar outras classes.
+ */
+public abstract class ContaBancaria {
     // #region atributos
     private String agencia;
     private String conta;
     private Integer digito;
     private Double saldo;
+    private Date dataAbertura;
     public Double VALOR_MINIMO_DEPOSITO = 10.0;
     // #endregion
 
@@ -17,6 +22,7 @@ public class ContaBancaria {
         this.conta = conta;
         this.digito = digito;
         this.saldo = saldoInicial;
+        this.dataAbertura = new Date();
     }
 
     // #endregion
@@ -49,9 +55,12 @@ public class ContaBancaria {
     public Double getSaldo() {
         return saldo;
     }
+    public Date getDataAbertura() {
+        return dataAbertura;
+    }
     //#endregion
 
-//#region metodos
+    //#region metodos
 public void depositar(Double valor){
     if(valor < VALOR_MINIMO_DEPOSITO){
     throw new InputMismatchException("O valor mínimo de depósito é R$" + VALOR_MINIMO_DEPOSITO);
