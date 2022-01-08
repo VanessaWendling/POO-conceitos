@@ -46,7 +46,7 @@ public class App {
 
         /*
          * um extrato bancário é composto por movimentações bancárias
-         * ter algo que possa ser a movimentação
+         * ter algo que possa s er a movimentação
          * ter uma lista de movimentações
          */
 
